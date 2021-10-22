@@ -261,4 +261,159 @@ def matrix_matrix_mult(mtx_1: list,mtx_2: list):
 
 #End Problem #5
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+#Problem 01
+
+def absolute_value(num_1: complex) -> float:
+    
+    """
+    figures the absolute value of a number 
+    
+    Create a result float that is equal to the square root of the real part
+    of the complex number squared plus the imaginary part of the complex number
+    squared
+    
+    Args:
+       num_1: a number of complex type 
+        
+    Returns:
+        the absolute value of a complex number stored as a float
+    """
+    
+    result: float = (num_1.real**2 + num_1.imag**2)**(1/2)
+    return result
+    
+
+      
+#End Problem #1
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    
+#Problem 02
+
+def pNorm(vec_1: list, num_1: float=2) -> float:
+    
+    """
+    figures the pNorm of a vector and p = (a scalar number) 
+    
+    Create a result float that is origionally set to 0
+    for each element in the input vector takes the absolute value of the element
+    to the power of the input scalar
+    then adds the resulting float to the result variable
+    returns the num_1 root of the total result float 
+    
+    Args:
+       vec_1: a list of real and/or complex numbers of complex type
+       num_1: a scalar number of float type which defaults to 2 if no input
+        
+    Returns:
+        the pNorm (stored as a float) of a vector where p is a scalar input 
+    """
+    
+    result: float = 0
+    for element in vec_1:
+        result += absolute_value(element)** num_1
+    return result**(1/num_1)
+    
+
+#End Problem #2
+
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+#Problem 03
+
+def infNorm(vec_1: list) -> float:
+    
+    """
+    figures the infinity Norm of a vector
+    
+    Create a result float equal to the absolute value of the maximum of
+    the input vector and lambda
+    
+    Args:
+       vec_1: a list of real and/or complex numbers of complex type
+        
+    Returns:
+        the infinity Norm of a vector (stored as a float)
+    """
+    
+    result: float = absolute_value(max(vec_1,key=lambda x: absolute_value(x)))
+    return result
+    
+
+#End Problem #3
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#Problem 04
+
+def normSelect(vec_1: list, num_1: float=2,isInf: bool=False)->float:
+    
+    """
+    selects the function whether the norm is infinite or not
+    
+    if the norm is infinite return the result of the infiniy norm functin
+    else the norm is NOT infinite return the result of the pNorm function
+    
+    Args:
+       vec_1: a list of real and/or complex numbers of complex type
+       num_1: a scalar of type float that defaults to 2 if no input arg
+       inInf: a bool that defaults to False
+        
+    Returns:
+        the result of the infinity norm or the p norm depending on if infinite
+        or not
+    """
+    
+    
+    if isInf == True:
+        return infNorm(vec_1)
+    else:
+        return pNorm(vec_1,num_1)
+    
+    
+
+#End Problem #4
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   
+
+#Problem 05
+
+
+
+def innerProd(vec_1: list, vec_2: list)-> float:
+    
+    """
+    calculates the inner product of two vectors
+    
+    creates a result of type float set to 0
+    next for each index in range vec_1 add to result the product of the corresponding
+    element of vector 1 multiplied with the element of vector 2 
+    
+    Args:
+       vec_1: a list of real and/or complex numbers of complex type
+       vec_2: a list of real and/or complex numbers of complex type
+        
+    Returns:
+        the result of the inner product of the two vectors stored as a float
+    """
+    
+    result: float = 0
+    for index in range(len(vec_1)):
+        result += vec_1[index]*vec_2[index]
+    
+    return result
+
+#End Problem #5
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     
