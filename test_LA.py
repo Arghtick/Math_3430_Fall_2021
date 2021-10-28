@@ -1,6 +1,7 @@
 
 import pytest
 import LA
+import QR
 
 test_vector_01 = [1, 2, 4]
 test_vector_02 = [3, 1, 2]
@@ -12,7 +13,8 @@ test_matrix_01 = [test_vector_01, test_vector_02, test_vector_03]
 test_comp_const_01 = 3 + 4j
 test_comp_const_02 = -3
 test_comp_vec_01 = [3 + 4j, 1, 4-3j]
-
+test_GS_mtx1 = [[2,2,1],[-2,1,2],[18,0,0]]
+test_GS_mtx2 = [[12,6,-4],[-51,167,24],[4,-68,-41]]
 
 def test_add_vectors1():
     
@@ -105,5 +107,13 @@ def test_innerProd1():
 
 def test_innerProd2():
     assert LA.innerProd(test_vector_02, test_vector_03) == 20
+    
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+def test_unstable_GramSchmidt1():
+    assert QR.unstable_GramSchmidt(test_GS_mtx1)[1] == [[3,0,0],[0,3,0],[12,-12,6]]
+
+#def test_unstable_GramSchmidt2():
+ #   assert LA.innerProd(test_vector_02, test_vector_03) == [[14,0,0],[21,175,0],[-14,-70,35]]
     
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
