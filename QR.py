@@ -54,6 +54,18 @@ def stable_GramSchmidt(mtx_1: list):
     """
     performs the stable version of Gram-Schmidt for reduced QR factorization
 
+    first initializes a square matrix or zeros R equal to the columns of the input matrix
+    also initializes a zero matrix of equal size to the input matrix
+    then for each element in the input matrix( appends the element of the input to V matrix
+    for each element in each element(vector) of the matrix
+    for each index in the input matrix
+    the corrosponding corrosponding element on the diagonal of R is set to the 
+    norm of the V vector at index. the scalar vector multiplication of the 
+    vector of V index divided by the element of R on the diagonal index
+    for each inner index from the index +1 to the length of the matrix
+    the corrosponding element in R is set the the inner product of Q index vector
+    and V inner index vector. V at the inner index is then set to itself minus the 
+    scalar vec multiplication of the element of R and the vector at Q index
 
     Parameters
     ----------
@@ -94,4 +106,6 @@ def stable_GramSchmidt(mtx_1: list):
 mtx = [[2,2,1],[-2,1,2],[18,0,0]]
 mtx = [[12,6,-4],[-51,167,24],[4,-68,-41]]
 
-print(stable_GramSchmidt(mtx)[1])
+print(unstable_GramSchmidt(mtx))
+print("--------------")
+print(stable_GramSchmidt(mtx))
