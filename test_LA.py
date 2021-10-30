@@ -113,7 +113,14 @@ def test_innerProd2():
 def test_unstable_GramSchmidt1():
     assert QR.unstable_GramSchmidt(test_GS_mtx1)[1] == [[3,0,0],[0,3,0],[12,-12,6]]
 
-#def test_unstable_GramSchmidt2():
- #   assert LA.innerProd(test_vector_02, test_vector_03) == [[14,0,0],[21,175,0],[-14,-70,35]]
+def test_unstable_GramSchmidt2():
+    assert QR.unstable_GramSchmidt(test_GS_mtx2)[1] == [[14,0,0],[21,175,0],[-14,-70,35]]
     
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+def test_stable_GramSchmidt1():
+    assert QR.stable_GramSchmidt(test_GS_mtx1)[1] == [[3,0,0],[0,3,0],[12,-12,6]]
+
+def test_stable_GramSchmidt2():
+    assert QR.stable_GramSchmidt(test_GS_mtx2)[1] == [[14,0,0],[21,175,0],[-14,-70,35]]
+    

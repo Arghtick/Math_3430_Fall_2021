@@ -265,6 +265,10 @@ def matrix_matrix_mult(mtx_1: list,mtx_2: list):
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+def conjugate(scalar: complex) -> complex:
+    result = scalar.real
+    result -=scalar.imag
+    return result
 
 #Problem 01
 
@@ -335,8 +339,7 @@ def infNorm(vec_1: list) -> float:
     """
     figures the infinity Norm of a vector
     
-    Create a result float equal to the absolute value of the maximum of
-    the input vector and lambda
+    for each element in vector if the result is smaller than the element set the result to the element
     
     Args:
        vec_1: a list of real and/or complex numbers of complex type
@@ -344,8 +347,10 @@ def infNorm(vec_1: list) -> float:
     Returns:
         the infinity Norm of a vector (stored as a float)
     """
-    
-    result: float = absolute_value(max(vec_1,key=lambda x: absolute_value(x)))
+    result = 0
+    for element in vec_1:
+        if absolute_value(element)> result:
+            result = absolute_value(element)
     return result
     
 
@@ -409,7 +414,7 @@ def innerProd(vec_1: list, vec_2: list)-> float:
     
     result: float = 0
     for index in range(len(vec_1)):
-        result += vec_1[index]*vec_2[index]
+        result += vec_1[index].conjugate() *vec_2[index]
     
     return result
 

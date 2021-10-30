@@ -103,9 +103,3 @@ def stable_GramSchmidt(mtx_1: list):
 
 
 
-mtx = [[2,2,1],[-2,1,2],[18,0,0]]
-mtx = [[12,6,-4],[-51,167,24],[4,-68,-41]]
-
-print(unstable_GramSchmidt(mtx))
-print("--------------")
-print(stable_GramSchmidt(mtx))
