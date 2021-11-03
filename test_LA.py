@@ -106,21 +106,37 @@ def test_innerProd1():
     assert LA.innerProd(test_vector_01, test_vector_03) == 15
 
 def test_innerProd2():
-    assert LA.innerProd(test_vector_02, test_vector_03) == 20
+    assert LA.innerProd(test_vector_02, test_comp_vec_01 ) == 18+6j
     
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def test_unstable_GramSchmidt1():
-    assert QR.unstable_GramSchmidt(test_GS_mtx1)[1] == [[3,0,0],[0,3,0],[12,-12,6]]
+    expected: list = [[3,0,0],[0,3,0],[12,-12,6]]
+    for index in range(0,2):
+        for column in range(len( QR.unstable_GramSchmidt(test_GS_mtx1)[1])):
+            for element in range(len(QR.unstable_GramSchmidt(test_GS_mtx1)[1][column])):
+                assert LA.absolute_value(QR.unstable_GramSchmidt(test_GS_mtx1)[1][column][element] - expected[column][element]) <= 0.001
 
 def test_unstable_GramSchmidt2():
-    assert QR.unstable_GramSchmidt(test_GS_mtx2)[1] == [[14,0,0],[21,175,0],[-14,-70,35]]
+    expected: list = [[14,0,0],[21,175,0],[-14,-70,35]]
+    for index in range(0,2):
+        for column in range(len( QR.unstable_GramSchmidt(test_GS_mtx2)[1])):
+            for element in range(len(QR.unstable_GramSchmidt(test_GS_mtx2)[1][column])):
+                assert LA.absolute_value(QR.unstable_GramSchmidt(test_GS_mtx2)[1][column][element] - expected[column][element]) <= 0.001
     
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def test_stable_GramSchmidt1():
-    assert QR.stable_GramSchmidt(test_GS_mtx1)[1] == [[3,0,0],[0,3,0],[12,-12,6]]
+    expected: list = [[3,0,0],[0,3,0],[12,-12,6]]
+    for index in range(0,2):
+        for column in range(len( QR.stable_GramSchmidt(test_GS_mtx1)[1])):
+            for element in range(len(QR.stable_GramSchmidt(test_GS_mtx1)[1][column])):
+                assert LA.absolute_value(QR.stable_GramSchmidt(test_GS_mtx1)[1][column][element] - expected[column][element]) <= 0.001
 
 def test_stable_GramSchmidt2():
-    assert QR.stable_GramSchmidt(test_GS_mtx2)[1] == [[14,0,0],[21,175,0],[-14,-70,35]]
-    
+    expected: list =  [[14,0,0],[21,175,0],[-14,-70,35]]
+    for index in range(0,2):
+        for column in range(len( QR.stable_GramSchmidt(test_GS_mtx2)[1])):
+            for element in range(len(QR.stable_GramSchmidt(test_GS_mtx2)[1][column])):
+                assert LA.absolute_value(QR.stable_GramSchmidt(test_GS_mtx2)[1][column][element] - expected[column][element]) <= 0.001
+   
