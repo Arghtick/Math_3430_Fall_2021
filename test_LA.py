@@ -110,20 +110,23 @@ def test_innerProd2():
     
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-def test_unstable_GramSchmidt1():
-    expected: list = [[3,0,0],[0,3,0],[12,-12,6]]
-    for index in range(0,2):
-        for column in range(len( QR.unstable_GramSchmidt(test_GS_mtx1)[1])):
-            for element in range(len(QR.unstable_GramSchmidt(test_GS_mtx1)[1][column])):
-                assert LA.absolute_value(QR.unstable_GramSchmidt(test_GS_mtx1)[1][column][element] - expected[column][element]) <= 0.001
+def test_orthonormal_vectorset1():
+    expected: list = [[2/3,2/3,1/3],[-2/3,1/3,2/3],[1/3,-2/3,2/3]]
+    for column in range(len( QR.orthonormal_vectorset(test_GS_mtx1))):
+        for element in range(len(QR.orthonormal_vectorset(test_GS_mtx1)[column])):
+            x= QR.orthonormal_vectorset(test_GS_mtx1)[column][element]
+            y=expected[column][element]
+            assert abs(x-y) <= 0.00001
 
-def test_unstable_GramSchmidt2():
-    expected: list = [[14,0,0],[21,175,0],[-14,-70,35]]
-    for index in range(0,2):
-        for column in range(len( QR.unstable_GramSchmidt(test_GS_mtx2)[1])):
-            for element in range(len(QR.unstable_GramSchmidt(test_GS_mtx2)[1][column])):
-                assert LA.absolute_value(QR.unstable_GramSchmidt(test_GS_mtx2)[1][column][element] - expected[column][element]) <= 0.001
-    
+def test_orthonormal_vectorset2():
+    expected: list = [[6/7,3/7,-2/7],[-69/175,158/175,6/35],[-58/175,6/175,-33/35]]
+    for column in range(len( QR.orthonormal_vectorset(test_GS_mtx2))):
+        for element in range(len(QR.orthonormal_vectorset(test_GS_mtx2)[column])):
+            x= QR.orthonormal_vectorset(test_GS_mtx2)[column][element]
+            y=expected[column][element]
+            assert abs(x-y) <= 0.00001
+
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def test_stable_GramSchmidt1():
@@ -139,4 +142,4 @@ def test_stable_GramSchmidt2():
         for column in range(len( QR.stable_GramSchmidt(test_GS_mtx2)[1])):
             for element in range(len(QR.stable_GramSchmidt(test_GS_mtx2)[1][column])):
                 assert LA.absolute_value(QR.stable_GramSchmidt(test_GS_mtx2)[1][column][element] - expected[column][element]) <= 0.001
-   
+
