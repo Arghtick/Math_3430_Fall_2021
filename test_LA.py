@@ -16,6 +16,7 @@ test_comp_vec_01 = [3 + 4j, 1, 4-3j]
 test_GS_mtx1 = [[2,2,1],[-2,1,2],[18,0,0]]
 test_GS_mtx2 = [[12,6,-4],[-51,167,24],[4,-68,-41]]
 
+
 def test_add_vectors1():
     
     assert LA.add_vectors(test_vector_01, test_vector_02) == [4,3,6]
@@ -142,4 +143,27 @@ def test_stable_GramSchmidt2():
         for column in range(len( QR.stable_GramSchmidt(test_GS_mtx2)[1])):
             for element in range(len(QR.stable_GramSchmidt(test_GS_mtx2)[1][column])):
                 assert LA.absolute_value(QR.stable_GramSchmidt(test_GS_mtx2)[1][column][element] - expected[column][element]) <= 0.001
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+def test_Householder1():
+    #i think this is the matrix you said we shouldnt use but it is the same 
+    #matrix i used for the last homework too i didnt know if that meant it was
+    #fine for me to still use in that case or if i need to come up with a whole
+    #new test
+    expected: list = [[-3,0,0],[0,-3,0],[-12,12,-6]]
+    for index in range(0,2):
+        for column in range(len( QR.householder(test_GS_mtx1)[1])):
+            for element in range(len(QR.householder(test_GS_mtx1)[1][column])):
+                assert LA.absolute_value(QR.householder(test_GS_mtx1)[1][column][element] - expected[column][element]) <= 0.00001
+
+def test_Householder2():
+    expected: list =  [[-14,0,0],[-21,-175,0],[14,70,35]]
+    for index in range(0,2):
+        for column in range(len( QR.householder(test_GS_mtx2)[1])):
+            for element in range(len(QR.householder(test_GS_mtx2)[1][column])):
+                assert LA.absolute_value(QR.householder(test_GS_mtx2)[1][column][element] - expected[column][element]) <= 0.000001
+
+
+
 

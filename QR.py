@@ -103,54 +103,58 @@ def orthonormal_vectorset(mtx_1: list):
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def householder(mtx:list):
-    """Performs Householder triangularization
-
-    Parameters
-    ----------
-    mtx : list
-        A input matrix of floats
-
-    Returns
-    -------
-    a list where first index is an orthogonal matrix Q and the second element 
-    is an upper triangular matrix R
-
+    """
+    Performs householder decomposition of a input matrix 
+    
+    copies the input matrix to R
+    initialize Q list
+    for each column in the input matrix
+        set a list equal to the output of Q_builder
+        set R equal to the output of the matrix matrix mutltiplication of x and R
+        append x to Q_list
+    take the conjugate transpose of the first element of the Q list 
+    multiply the conjugate transpose of each element of Q list together and 
+    store it in Q
+    
+    Args:
+       mtx: matrix of floats stored as a list of lists of floats
+       
+        
+    Returns:
+        a List with the first element is a orthogonal matrix Q and the second
+        element is an upper triangular matrix R. 
+        Stored as a list of two lists of lists of floats
     """
     
-    #m = len(mtx)
-    #n = len(mtx[0])
     R:list = deep_copy(mtx)
     Q_list: list = []
-    
-    
     for k in range(len(R)):
         x: list = Q_builder(R,k)
-        
-        
         R = LA.matrix_matrix_mult(x, R)
-        
         Q_list.append(x)
         
-    
-    Q: list = Q_list[-1]
-    
     Q: list = conjugate_transpose(Q_list[0])
     
     for index in range (1, len(Q_list)):
         ct = conjugate_transpose(Q_list[index])
         Q = LA.matrix_matrix_mult(Q, ct)
-    print([Q,R])
-    print("~~~~~~~~~~~~~~~~~~~~~`")
-    print(LA.matrix_matrix_mult(Q, R))
+    
     return[Q,R]
 
 
 
 def i_mtx(x: int)->list:
+    """
+    creates the identity matrix of input size
+
+    Args:
+        x: input size of identity matrix stored as int
+
+    Returns
+        the identity matrix stored as a list of lists
+    """
     i_list: list = [[0 for element in range(x)] for index in range(x)]
     for index in range(x):
-       # for element in range(x):
-        
         i_list[index][index] = 1
     return i_list
   
@@ -159,12 +163,31 @@ def i_mtx(x: int)->list:
     
   
 def sign(x: float)-> float:
+    """
+    figures if the input float is pos or neg
+    
+    Args:
+        x: input float
+        
+    Returns:
+        either 1 if x is pos or -1 if x is negative
+    """
     if x>=0:
         return 1
     else:
         return -1
     
 def vec_vec_mult(vector_1, vector_2):
+    """
+    calculates the vector vector multiplication
+    
+    Args: 
+        vector_1: a input vector stored as a list of floats
+        vector_2: a input vector stored as a list of floats
+        
+    Return:
+        the result of matrix matrix multiplication stored as a list
+    """
     result = []
     vector_1 == vector_2
     for x in range(len(vector_1)):
@@ -172,25 +195,36 @@ def vec_vec_mult(vector_1, vector_2):
     return result
     
 def F_builder(vec: list)->list:
+    """
+    builds the F section of the orthogonal matrix Q
+    
+    
+    Args:    
+        vec: input vector stored as a list of floats.
+
+    Returns:
+        a matrix stored as a list of lists
+
+    """
     s = -2/(LA.pNorm(vec))**2
     x = LA.scalar_matrix_mult(s, vec_vec_mult(vec, vec))
     y = LA.add_matrix(i_mtx(len(vec)), x)
     return y
     
+
+
 def Q_builder(mtx:list, n: int):
     """
-    builds a iteration of the orthogonal matrix Q
+    builds a iteration of the orthogonal matrix Q.
     
-    Parameters
-    ----------
-    mtx : list
-        in input matrix stored as a list of lists.
-    n : int
-        iteration index.
+    
+    
+    Args:
+        mtx: an input matrix stored as a list of lists.
+        n : iteration index stored as a int.
 
-    Returns
-    -------
-     Q 
+    Returns:
+        matrix Q stored as a list of lists.
 
     """ 
     
@@ -212,12 +246,37 @@ def Q_builder(mtx:list, n: int):
     
     
 def reflect_vec(vec: list)->list:
+    """
+    calculates the reflection vector of a input vector
+    
+    vec:
+        an vector stored as a list of floats.
+
+    Returns:
+        the reflection of the input vector stored as a list of floats.
+
+    """
     e = [0 for element in range(len(vec))]
     e[0]=1
     v = LA.add_vectors(LA.scalar_vector_mult(sign(vec[0])*LA.pNorm(vec), e),vec)
     return v
 
+
+
 def deep_copy(mtx:list)-> list:
+    """
+    deeply copies the input vector
+    
+    
+
+    Args:
+        mtx: an input matrix stored as a list of lists 
+        
+
+    Returns:
+        a copy of input stored as a list of lists
+
+    """
     a: list = [[0 for element in range(len(mtx[0]))]for index in range(len(mtx))]
     for index in range(len(mtx)):
         for element in range(len(mtx[index])):
@@ -227,6 +286,20 @@ def deep_copy(mtx:list)-> list:
 
 
 def conjugate_transpose(mtx_1: list)-> list:
+    """
+    Performs the conjugate transpose of a matrix
+
+    Args:
+        mtx_1: input matrix 
+
+    Returns
+    -------
+    list
+        DESCRIPTION.
+
+    """
+    
+    
     con_mtx: list =[[0 for element in range(len(mtx_1[0]))]for index in range(len(mtx_1))]
     tran_mtx: list = [[0 for element in range(len(mtx_1[0]))]for index in range(len(mtx_1))]
     for i in range (len(mtx_1)):
@@ -240,6 +313,6 @@ def conjugate_transpose(mtx_1: list)-> list:
 
 
 x = [[2,2,1],[-2,1,2],[18,0,0]]
-householder(x)
+print(householder(x))
 
     
