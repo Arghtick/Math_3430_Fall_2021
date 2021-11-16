@@ -68,15 +68,12 @@ def orthonormal_vectorset(mtx_1: list):
     the diagonal elements of R are set to equal the norm of the V index)
     the orthoganal vector set Q is then set to be the list V divided by the diagonal scalar elements of R
 
-    Parameters
-    ----------
-    mtx_1 : list
-        an input matrix stored as a list of lists
+    Args:
+        mtx_1 : list
+            an input matrix stored as a list of lists
 
     Returns
-    -------
-    list
-        the orthogonal matrix stored as a list
+        Q: the orthogonal matrix stored as a list
         
     """
     
@@ -117,13 +114,14 @@ def householder(mtx:list):
     store it in Q
     
     Args:
-       mtx: matrix of floats stored as a list of lists of floats
+       mtx: matrix of floats stored as a list of lists of floats.
        
         
     Returns:
-        a List with the first element is a orthogonal matrix Q and the second
+        [Q,R]: a List with the first element is a orthogonal matrix Q and the second
         element is an upper triangular matrix R. 
-        Stored as a list of two lists of lists of floats
+        Stored as a list of two lists of lists of floats.
+        
     """
     
     R:list = deep_copy(mtx)
@@ -145,13 +143,16 @@ def householder(mtx:list):
 
 def i_mtx(x: int)->list:
     """
-    creates the identity matrix of input size
+    creates the identity matrix of input size.
+    
+    creates a martix of zeros the size of input int then sets the diagonal
+    elements to 1
 
     Args:
-        x: input size of identity matrix stored as int
+        x: input size of identity matrix stored as int.
 
     Returns
-        the identity matrix stored as a list of lists
+        i_list: the identity matrix stored as a list of lists.
     """
     i_list: list = [[0 for element in range(x)] for index in range(x)]
     for index in range(x):
@@ -164,13 +165,16 @@ def i_mtx(x: int)->list:
   
 def sign(x: float)-> float:
     """
-    figures if the input float is pos or neg
+    figures if the input float is pos or neg.
+    
+    if input is greater than 0 returns 1, else (input is less than 0) 
+    returns -1.
     
     Args:
-        x: input float
+        x: input float.
         
     Returns:
-        either 1 if x is pos or -1 if x is negative
+        either 1 if x is pos or -1 if x is negative.
     """
     if x>=0:
         return 1
@@ -179,14 +183,16 @@ def sign(x: float)-> float:
     
 def vec_vec_mult(vector_1, vector_2):
     """
-    calculates the vector vector multiplication
+    calculates the vector vector multiplication.
+    
+    
     
     Args: 
-        vector_1: a input vector stored as a list of floats
-        vector_2: a input vector stored as a list of floats
+        vector_1: a input vector stored as a list of floats.
+        vector_2: a input vector stored as a list of floats.
         
     Return:
-        the result of matrix matrix multiplication stored as a list
+        result: the result of matrix matrix multiplication stored as a list.
     """
     result = []
     vector_1 == vector_2
@@ -196,14 +202,14 @@ def vec_vec_mult(vector_1, vector_2):
     
 def F_builder(vec: list)->list:
     """
-    builds the F section of the orthogonal matrix Q
+    builds the F section of the orthogonal matrix Q.
     
     
     Args:    
         vec: input vector stored as a list of floats.
 
     Returns:
-        a matrix stored as a list of lists
+        y: a matrix stored as a list of lists.
 
     """
     s = -2/(LA.pNorm(vec))**2
@@ -217,14 +223,18 @@ def Q_builder(mtx:list, n: int):
     """
     builds a iteration of the orthogonal matrix Q.
     
-    
+    for each index in the input matrix
+        for the matrix within the column/row that is at the current itteration
+        index coppies the input matrix
+        for the F_builder taking in the reflect vector as its argument
+        adds f to the lower right section of Q
     
     Args:
         mtx: an input matrix stored as a list of lists.
         n : iteration index stored as a int.
 
     Returns:
-        matrix Q stored as a list of lists.
+        Q: matrix Q stored as a list of lists.
 
     """ 
     
@@ -247,13 +257,16 @@ def Q_builder(mtx:list, n: int):
     
 def reflect_vec(vec: list)->list:
     """
-    calculates the reflection vector of a input vector
+    calculates the reflection vector of a input vector.
+    
+    the sign of vector times the pNorm of the vector times the vector [1,0,...]
+    added with the input vector
     
     vec:
         an vector stored as a list of floats.
 
     Returns:
-        the reflection of the input vector stored as a list of floats.
+        v: the reflection of the input vector stored as a list of floats.
 
     """
     e = [0 for element in range(len(vec))]
@@ -265,16 +278,16 @@ def reflect_vec(vec: list)->list:
 
 def deep_copy(mtx:list)-> list:
     """
-    deeply copies the input vector
+    deeply copies the input vector.
     
-    
+    coppies each index in the matrix to a new matrix
 
     Args:
-        mtx: an input matrix stored as a list of lists 
+        mtx: an input matrix stored as a list of lists.
         
 
     Returns:
-        a copy of input stored as a list of lists
+        a: copy of input stored as a list of lists.
 
     """
     a: list = [[0 for element in range(len(mtx[0]))]for index in range(len(mtx))]
@@ -287,15 +300,18 @@ def deep_copy(mtx:list)-> list:
 
 def conjugate_transpose(mtx_1: list)-> list:
     """
-    Performs the conjugate transpose of a matrix
+    Performs the conjugate transpose of a matrix.
+
+    takes the conjugate for each element in the input matrix
+    then transposes the matrix
+    
 
     Args:
-        mtx_1: input matrix 
+        mtx_1: input matrix. 
 
-    Returns
-    -------
-    list
-        DESCRIPTION.
+    Returns:
+        tran_mtx: a matrix stored as a list of lists
+
 
     """
     
@@ -310,9 +326,5 @@ def conjugate_transpose(mtx_1: list)-> list:
         for j in range(len(mtx_1)):
             tran_mtx[i][j]=(con_mtx[j][i])
     return tran_mtx
-
-
-x = [[2,2,1],[-2,1,2],[18,0,0]]
-print(householder(x))
 
     
