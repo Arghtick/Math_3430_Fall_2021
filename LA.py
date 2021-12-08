@@ -216,7 +216,6 @@ def matrix_vector_mult(mtx_1: list,vec_1: list):
      
     
     for index in range(len(temp)):
-      
       temp = scalar_vector_mult(vec_1[index],mtx_1[index])
       result = add_vectors(result,temp)
     
@@ -266,6 +265,18 @@ def matrix_matrix_mult(mtx_1: list,mtx_2: list):
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def conjugate(scalar: complex) -> complex:
+    """
+    figures the conjugate of a complex number
+    
+    changes the sign of the imaginary part of the complex number
+    
+    Args:
+        scalar: a number of complex type
+    
+    Returns:
+        the result of conjugate of complex number
+
+    """
     result = scalar.real
     result -=scalar.imag
     return result
