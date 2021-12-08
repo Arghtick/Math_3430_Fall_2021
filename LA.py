@@ -210,7 +210,7 @@ def matrix_vector_mult(mtx_1: list,vec_1: list):
         floats
     """
     
-    result: list = [0 for element in vec_1]
+    result: list = [0 for element in mtx_1[0]]
     
     temp: list = [0 for element in vec_1]
      

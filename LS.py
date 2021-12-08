@@ -5,25 +5,43 @@ import QR
 
 
 def leastSquare(mtx: list, vec: list):
-    """
-    calculates least squares solution using QR factorization method
-    
-    
+    """Calculates the least squares solution of a martix.
 
+    Short explanation of how the algorithm works. This part corresponds
+    to your answer to the third question.
+
+    Args:
+        mtx: A matrix stored as a list of lists of floats.
+        vec: A vector stored as a list of floats.
+
+    Returns:
+        A vector result of the least squares stored as a list
     """
-    temp = QR.stable_GramSchmidt(mtx)
-    Q = temp[0]
-    R = temp[1]
+    temp: list = QR.stable_GramSchmidt(mtx)
+    Q: list= temp[0]
+    R: list = temp[1]
     
-    Q_tran = QR.conjugate_transpose(Q)
-    Q_temp = LA.matrix_vector_mult(Q_tran, vec)
+    Q_tran: list = QR.conjugate_transpose(Q)
+    Q_temp: list = LA.matrix_vector_mult(Q_tran, vec)
     
-    x = backsub(R, Q_temp)
-    return x
+    result: list = backsub(R, Q_temp)
+    return result
     
 
 
 def backsub(mtx: list, vec: list):
+    """Calculates the back substitution using a matrix and vector
+
+    Short explanation of how the algorithm works. This part corresponds
+    to your answer to the third question.
+
+    Args:
+        mtx: A matrix stored as a list of lists of floats.
+        vec: A vector stored as a list of floats.
+
+    Returns:
+        A vector result of the back substitution stored as a list
+    """
     result: list = []
     a = 1/(mtx[len(mtx)-1][len(mtx[0])-1])
     temp = a * vec[len(vec)-1]
@@ -42,4 +60,4 @@ def backsub(mtx: list, vec: list):
     result = new_temp
     return result
 
-print(leastSquare([[1,1,1],[1,2,3],[2,3,4]], [0,1,3]))
+#print(leastSquare([[-1,2,-1],[2,-3,3]], [4,1,2]))

@@ -317,12 +317,11 @@ def conjugate_transpose(mtx_1: list)-> list:
     
     
     con_mtx: list =[[0 for element in range(len(mtx_1[0]))]for index in range(len(mtx_1))]
-    tran_mtx: list = [[0 for element in range(len(mtx_1[0]))]for index in range(len(mtx_1))]
+    tran_mtx: list = [[0 for element in range(len(mtx_1))]for index in range(len(mtx_1[0]))]
     for i in range (len(mtx_1)):
-        for j in range(len(mtx_1)):
+        for j in range(len(mtx_1[0])):
             con_mtx[i][j]=(LA.conjugate(mtx_1[i][j]))
-            
-    for i in range (len(mtx_1)):
+    for i in range (len(mtx_1[0])):
         for j in range(len(mtx_1)):
             tran_mtx[i][j]=(con_mtx[j][i])
     return tran_mtx
