@@ -1,3 +1,11 @@
+
+"""
+Name: Rider Jefferies
+Date: 12/8/2021
+
+
+"""
+
 import pytest
 import LA
 import QR

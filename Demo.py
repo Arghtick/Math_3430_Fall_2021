@@ -1,4 +1,10 @@
-#Demo.py
+
+"""
+Name: Rider Jefferies
+Date: 12/8/2021
+
+
+"""
 
 import LA
 import QR

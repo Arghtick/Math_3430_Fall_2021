@@ -1,4 +1,11 @@
-#LS.py
+
+"""
+Name: Rider Jefferies
+Date: 12/8/2021
+
+
+"""
+
 import LA
 import QR
 
@@ -18,7 +25,7 @@ def leastSquare(mtx: list, vec: list):
         vec: A vector stored as a list of floats.
 
     Returns:
-        A vector result of the least squares stored as a list
+        A vector result of the least squares stored as a list.
     """
     temp: list = QR.stable_GramSchmidt(mtx)
     Q: list= temp[0]
@@ -46,7 +53,7 @@ def backsub(mtx: list, vec: list):
         vec: A vector stored as a list of floats.
 
     Returns:
-        A vector result of the back substitution stored as a list
+        A vector result of the back substitution stored as a list.
     """
     result: list = []
     a: float = 1/(mtx[len(mtx)-1][len(mtx[0])-1])
