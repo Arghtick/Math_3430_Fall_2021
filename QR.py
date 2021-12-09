@@ -42,7 +42,7 @@ def stable_GramSchmidt(mtx_1: list):
     for index in range(len(mtx_1)):
         V.append(mtx_1[index])
        
-        #print(V[index])
+        
     for index in range(len(mtx_1)):
         R[index][index] = LA.pNorm(V[index])
         Q.append(LA.scalar_vector_mult(1/R[index][index], V[index]))
@@ -142,8 +142,7 @@ def householder(mtx:list):
 
 
 def i_mtx(x: int)->list:
-    """
-    creates the identity matrix of input size.
+    """creates the identity matrix of input size.
     
     creates a martix of zeros the size of input int then sets the diagonal
     elements to 1
@@ -152,7 +151,7 @@ def i_mtx(x: int)->list:
         x: input size of identity matrix stored as int.
 
     Returns
-        i_list: the identity matrix stored as a list of lists.
+        The identity matrix stored as a list of lists.
     """
     i_list: list = [[0 for element in range(x)] for index in range(x)]
     for index in range(x):
@@ -164,8 +163,7 @@ def i_mtx(x: int)->list:
     
   
 def sign(x: float)-> float:
-    """
-    figures if the input float is pos or neg.
+    """figures if the input float is pos or neg.
     
     if input is greater than 0 returns 1, else (input is less than 0) 
     returns -1.
@@ -185,25 +183,31 @@ def vec_vec_mult(vector_1, vector_2):
     """
     calculates the vector vector multiplication.
     
-    
+    for each element in vector_1 perform scalar vector multiplication and append
+    retuned value to result
     
     Args: 
         vector_1: a input vector stored as a list of floats.
         vector_2: a input vector stored as a list of floats.
         
     Return:
-        result: the result of matrix matrix multiplication stored as a list.
+        The result of vector vector multiplication stored as a list.
     """
-    result = []
-    vector_1 == vector_2
+    result: list = []
+    
     for x in range(len(vector_1)):
         result.append(LA.scalar_vector_mult(vector_1[x], vector_2))
     return result
     
+
+
 def F_builder(vec: list)->list:
-    """
-    builds the F section of the orthogonal matrix Q.
     
+    """builds the F section of the orthogonal matrix Q.
+    
+    adds the identity matrix of size equal to input vec to the result of 
+    (-2 divided by the pnorm of the vector squared) multiplied with 
+    the input vector multiplied with itself.
     
     Args:    
         vec: input vector stored as a list of floats.
@@ -212,16 +216,16 @@ def F_builder(vec: list)->list:
         y: a matrix stored as a list of lists.
 
     """
-    s = -2/(LA.pNorm(vec))**2
-    x = LA.scalar_matrix_mult(s, vec_vec_mult(vec, vec))
-    y = LA.add_matrix(i_mtx(len(vec)), x)
+    s: float = -2/(LA.pNorm(vec))**2
+    x: list = LA.scalar_matrix_mult(s, vec_vec_mult(vec, vec))
+    y: list = LA.add_matrix(i_mtx(len(vec)), x)
+    
     return y
     
 
 
 def Q_builder(mtx:list, n: int):
-    """
-    builds a iteration of the orthogonal matrix Q.
+    """builds a iteration of the orthogonal matrix Q.
     
     for each index in the input matrix
         for the matrix within the column/row that is at the current itteration
@@ -245,10 +249,10 @@ def Q_builder(mtx:list, n: int):
                 if n+j < len(mtx[i]):
                     A[i][j] = mtx[n+i][n+j]
     
-    v = reflect_vec(A[0])
+    v: list = reflect_vec(A[0])
     
-    f = F_builder(v)
-    Q = i_mtx(len(mtx))
+    f: list = F_builder(v)
+    Q: list = i_mtx(len(mtx))
     for i in range(n,len(Q)):
         for j in range(n,len(Q)):
             Q[i][j] = f[i-n][j-n]
@@ -256,8 +260,7 @@ def Q_builder(mtx:list, n: int):
     
     
 def reflect_vec(vec: list)->list:
-    """
-    calculates the reflection vector of a input vector.
+    """calculates the reflection vector of a input vector.
     
     the sign of vector times the pNorm of the vector times the vector [1,0,...]
     added with the input vector
@@ -269,18 +272,17 @@ def reflect_vec(vec: list)->list:
         v: the reflection of the input vector stored as a list of floats.
 
     """
-    e = [0 for element in range(len(vec))]
+    e: list = [0 for element in range(len(vec))]
     e[0]=1
-    v = LA.add_vectors(LA.scalar_vector_mult(sign(vec[0])*LA.pNorm(vec), e),vec)
+    v: list = LA.add_vectors(LA.scalar_vector_mult(sign(vec[0])*LA.pNorm(vec), e),vec)
     return v
 
 
 
 def deep_copy(mtx:list)-> list:
-    """
-    deeply copies the input vector.
+    """deeply copies the input vector.
     
-    coppies each index in the matrix to a new matrix
+    coppies each index in the matrix to a new matrix.
 
     Args:
         mtx: an input matrix stored as a list of lists.
@@ -320,7 +322,8 @@ def conjugate_transpose(mtx_1: list)-> list:
     tran_mtx: list = [[0 for element in range(len(mtx_1))]for index in range(len(mtx_1[0]))]
     for i in range (len(mtx_1)):
         for j in range(len(mtx_1[0])):
-            con_mtx[i][j]=(LA.conjugate(mtx_1[i][j]))
+            x: complex = mtx_1[i][j]
+            con_mtx[i][j]=(x.conjugate())
     for i in range (len(mtx_1[0])):
         for j in range(len(mtx_1)):
             tran_mtx[i][j]=(con_mtx[j][i])

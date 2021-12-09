@@ -14,6 +14,7 @@ print(" ");
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 print("add_vectors") 
+print(" ")
 print("takes in two vectors and returns their sum")
 print("Example: ")
 print("a = [1, 2, 4], b = [3, 1, 2] then add_vectors(a,b) returns:")
@@ -27,6 +28,7 @@ print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 print("scalar_vector_mult")
+print(" ")
 print("takes in a scalar and a vector and teturns their product")
 print("Example: ")
 print("x = 2, a = [1, 2, 4] then scalar_vector_mult returns:")
@@ -40,6 +42,7 @@ print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 print("scalar_matrix_mult") 
+print(" ")
 print("takes in a scalar and a matrix and returns their scalar-matrix multiplication")
 print("Example: ")
 print("x = 2, mtx = [[1, 2, 4],[3, 1, 2],[5, 3, 1]] then scalar_matrix_mult returns:")
@@ -53,6 +56,7 @@ print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 print("add_matrix ")
+print(" ")
 print("takes in two matrix and returns thier sum")
 print("Example: ")
 print("a = [[1, 2, 4],[3, 1, 2],[5, 3, 1]], b = [[1, 2, 4],[3, 1, 2],[5, 3, 1]]")
@@ -67,6 +71,7 @@ print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 print("matrix_vector_mult ")
+print(" ")
 print("takes in a matrix and a vector and returns matrix vector multiplication")
 print("Example: ")
 print("mtx = [[1, 2, 4],[3, 1, 2],[5, 3, 1]], vec = [1, 2, 4] then matrix_vector_mult")
@@ -81,6 +86,7 @@ print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 print("matrix_matrix_mult")
+print(" ")
 print("takes in takes in two matrix and returns their matrix matrix multiplication")
 print("Example: ")
 print("mtx = [[1, 2, 4],[3, 1, 2],[5, 3, 1]] then matrix_matrix_mult returns:")
@@ -92,19 +98,8 @@ print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-print("conjugate")
-print("takes in a complex number and returns the complex conjugate")
-print("Example: ")
-print("x= 3 + 4j then conjugate returns:")
-print(" ")
-x = 3 + 4j;
-print(LA.conjugate(x))
-print(" ")
-print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 print("absolute_value")
+print(" ")
 print("takes in a complex number and returns the absolute value")
 print("Example: ")
 print("x = 3 - 4j then absolute_value returns: ")
@@ -117,6 +112,7 @@ print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 print("pNorm")
+print(" ")
 print("takes in a vector and a float and returns the p-norm of the vector,")
 print("p is the float and defaults to 2.")
 print("Example: ")
@@ -130,6 +126,7 @@ print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 print("infNorm")
+print(" ")
 print("takes in a vector and returns the infinity norm")
 print("Example: ")
 print("vec_1 = [3 + 4j, 1, 4-3j] then infNorm returns:")
@@ -142,6 +139,7 @@ print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 print("normSelect")
+print(" ")
 print("takes in a vector a float and a boolean and returns infinity norm")
 print("if bool is true and returns p-norm if bool is false")
 print("Example: ")
@@ -156,6 +154,7 @@ print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 print("innerProd")
+print(" ")
 print("takes two vectors and returns the inner product.")
 print("Example: ")
 print("if vec_1 = [1, 2, 4], vec_2 = [5, 3, 1] then innerProd returns:")
@@ -172,6 +171,7 @@ print("~~~QR.py~~~")
 print(" ")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 print("stable_GramSchmidt")
+print(" ")
 print("takes in a matrix and implements gram-schmidt and returns")
 print("the Q, R matrices")
 print("Example: ")
@@ -185,6 +185,7 @@ print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 print("orthonormal_vectorset")
+print(" ")
 print("takes in a list of vectors returns orthonormal list of vectors")
 print("Example: ")
 print("if mtx_1 =  [[2,2,1],[-2,1,2],[18,0,0]] then orthonormal_vectorset returns:")
@@ -197,6 +198,7 @@ print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 print("householder")
+print(" ")
 print("takes in a martix implements householder orthogonalization,")
 print("returns the Q and R matrixes")
 print("Example: ")
@@ -216,7 +218,12 @@ print(" ")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 print("least_squares")
+print(" ")
 print("takes in a matrix and a vector and returns the least squares solution")
 print("Example: ")
-
+print("if mtx = [[-1,2,-1],[2,-3,3]] and vec = [4,1,2] then leastSquare returns:")
+print(" ")
+print(LS.leastSquare([[-1,2,-1],[2,-3,3]], [4,1,2]))
+print(" ")
+print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -7,8 +7,11 @@ import QR
 def leastSquare(mtx: list, vec: list):
     """Calculates the least squares solution of a martix.
 
-    Short explanation of how the algorithm works. This part corresponds
-    to your answer to the third question.
+    first takes the result of the stable_GramSchmidt function using the input matrix
+    then splits up the Q and R parts. next takes the conjugate transpose of Q
+    then the product of Q Transpose and the input vector
+    finally takes the back substitution of the product vector and the triangular 
+    matrix R.
 
     Args:
         mtx: A matrix stored as a list of lists of floats.
@@ -32,8 +35,11 @@ def leastSquare(mtx: list, vec: list):
 def backsub(mtx: list, vec: list):
     """Calculates the back substitution using a matrix and vector
 
-    Short explanation of how the algorithm works. This part corresponds
-    to your answer to the third question.
+    first divides the last element of the vector by the last element of the matrix
+    and appends the quotient to the result list. Next for each index >1 subtract
+    the elements to the right of the diagonal multiplied with the solution 
+    next divide by the diagonal. Then append the quotient to the result list.
+    finally flips the result and returns it
 
     Args:
         mtx: A matrix stored as a list of lists of floats.
@@ -43,8 +49,8 @@ def backsub(mtx: list, vec: list):
         A vector result of the back substitution stored as a list
     """
     result: list = []
-    a = 1/(mtx[len(mtx)-1][len(mtx[0])-1])
-    temp = a * vec[len(vec)-1]
+    a: float = 1/(mtx[len(mtx)-1][len(mtx[0])-1])
+    temp: float = a * vec[len(vec)-1]
     result.append(temp)
     for index in range(1,len(mtx)):
         current: int = len(mtx) - 1 - index
@@ -59,5 +65,3 @@ def backsub(mtx: list, vec: list):
     
     result = new_temp
     return result
-
-#print(leastSquare([[-1,2,-1],[2,-3,3]], [4,1,2]))
